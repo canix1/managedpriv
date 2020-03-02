@@ -1,4 +1,4 @@
-baseURL = "http://demo.themefisher.com/bexer-hugo/"
+baseURL = "https://canix1.github.io/managedpriv.github.io/"
 languageCode = "en-us"
 title = "Robin Graberg - Managed Privileges"
 theme = "bexar-hugo"
