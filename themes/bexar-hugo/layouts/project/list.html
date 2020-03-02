@@ -1,0 +1,43 @@
+{{ define "main" }}
+
+  {{ partial "page-title.html" . }}
+    
+  {{ "<!-- project -->" | safeHTML }}
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <ul class="list-inline text-center mb-4 filter-controls">
+            <li class="list-inline-item h5 p-2 font-secondary text-dark active" data-filter="all">ALL</li>
+            {{ range .Site.Data.project.filterList }}
+            <li class="list-inline-item h5 p-2 font-secondary text-dark text-uppercase" data-filter="{{ .filterType | urlize | lower }}">{{ .filterType }}</li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+      <div class="row filtr-container">
+        {{ range .Data.Pages }}
+        {{ "<!-- project-item -->" | safeHTML }}
+        <div class="col-lg-4 col-sm-6 mb-4 filtr-item" data-category="{{ .Params.FilterType | lower }}">
+          <div class="project-item">
+            <div class="position-relative mb-4 overflow-hidden">
+              <img src="{{ .Params.Image | absURL }}"  onerror="this.src='{{.Params.ImageAlt | absURL }}'" alt="project thumb" class="img-fluid w-100">
+              <div class="hover-overlay">
+                <a href="{{ .Params.Image | absURL }}" class="venobox"><i class="uni-plus"></i></a>
+              </div>
+            </div>
+            {{ "<!-- project-info -->" | safeHTML }}
+            <div>
+              <h6 class="text-primary">{{ .Params.ProjectType }}</h6>
+              <h4><a class="text-dark" href="{{ .Permalink }}">{{ .Title }}</a></h4>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ "<!-- /project -->" | safeHTML }}
+  
+
+{{ end }}

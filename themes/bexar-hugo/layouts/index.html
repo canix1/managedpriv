@@ -1,0 +1,233 @@
+{{ define "main" }}
+
+  {{ if .Site.Data.slider.slider.enable }}
+  {{ "<!-- slider -->" | safeHTML }}
+  <section>
+    <div class="hero-slider">
+      {{ range .Site.Data.slider.sliderItem }}
+      {{ "<!-- slider item -->" | safeHTML }}
+      <div class="hero-slider-item bg-cover hero-section" style="background-image: url('{{ .bgImage | absURL }}'),url('{{ .bgImageAlt | absURL }}');">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6" data-duration-in=".3" data-animation-in="{{ .animation }}" data-delay-in=".1">
+              <h4 class="mb-0 letter-spacing">{{ .preTitle }}</h4>
+              <h1 class="mb-4">{{ .title }}</h1>
+              <p class="mb-5">{{ .shortDescription }}</p>
+              {{ if .button.enable }}
+              <a href="{{ .button.URL | absURL }}" class="btn btn-primary-outline" data-duration-in=".3" data-animation-in="{{ .button.animation }}" data-delay-in=".4">{{ .button.btnText }}</a>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ "<!-- /slider -->" | safeHTML }}
+  {{ end }}
+
+
+  {{ if .Site.Data.slider.feature.enable}}
+  {{ "<!-- banner feature -->" | safeHTML }}
+  <section class="banner-feature-wrapper">
+    <div class="container">
+      <div class="row justify-content-center">
+        {{ range .Site.Data.slider.feature.featureItem }}
+        {{ "<!-- feature item -->" | safeHTML }}
+        <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+          <div class="bg-white py-5 px-4 text-center box-shadow banner-feature">
+            <div class="icon-bg mb-4 water-wave">
+              <i class="fa {{ .icon }} icon text-primary"></i>
+            </div>
+            <h4 class="mb-4">{{ .title }}</h4>
+            <p>{{ .description }}</p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ "<!-- /banner feature -->" | safeHTML }}
+  {{ end }}
+
+  {{ if .Site.Data.homepage.about.enable }}
+  {{ "<!-- about us -->" | safeHTML }}
+  <section class="section pt-0">
+    {{ partial "about.html" . }}
+  </section>
+  {{ "<!-- /about us -->" | safeHTML }}
+  {{ end }}
+
+  {{ "<!-- blog -->" | safeHTML }}
+  <section class="section bg-gray-white position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          {{ with .Site.Data.homepage.blog }}
+          <div class="section-title-border"></div>
+          <h4 class="section-title-sm">{{ .titleSM }}</h4>
+          <h2 class="section-title">{{ .title }}</h2>
+          {{ end }}
+        </div>
+      </div>
+      <div class="row">
+        {{ "<!-- blog post -->" | safeHTML }}
+        {{ range first 3 ( where .Site.Pages "Type" "post" )}}
+        <article class="col-lg-4 col-sm-6 mb-lg-0 mb-4 zindex-1">
+          <div class="card border-0 rounded-0 position-relative box-shadow">
+            <div class="card-type">{{ .Params.PostType }}</div>
+            <img class="card-img-top rounded-0" src="{{ .Params.Image | absURL }}"  onerror="this.src='{{.Params.ImageAlt | absURL }}'" alt="blog-thumb">
+            <div class="card-body">
+              <div class="card-meta text-uppercase mb-2">by <strong class="text-dark">{{ .Params.Author }}</strong>/ on <strong class="text-dark">{{ .PublishDate.Format "02 Jan 2006" }}</strong></div>
+              <h4 class="card-title"><a class="text-dark" href="{{ .Permalink }}">{{ .Title }}</a></h4>
+              <div class="section-title-border"></div>
+              <p class="card-text">{{ .Summary }}</p>
+            </div>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+    {{ "<!-- background shapes -->" | safeHTML }}
+    <img class="img-fluid blog-shape-left" src="{{`images/backgrounds/blog-bg-left.webp` | relURL }}" alt="" onerror="this.src='{{`images/backgrounds/blog-bg-left.png` | relURL }}'">
+    <img class="img-fluid blog-shape-right" src="{{`images/backgrounds/blog-bg-right.webp` | relURL }}" alt="" onerror="this.src='{{`images/backgrounds/blog-bg-right.png` | relURL }}'">
+  </section>
+  {{ "<!-- /blog -->" | safeHTML }}
+  
+  {{ if .Site.Data.homepage.funfacts.enable }}
+  {{ "<!-- funfacts -->" | safeHTML }}
+  <section class="funfacts">
+    <div class="container">
+      <div class="row bg-secondary p-5">
+        {{ range .Site.Data.homepage.funfacts.funfactsItem }}
+        {{ "<!-- funfacts item -->" | safeHTML }}
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <div class="d-flex align-items-center">
+            <i class="fa {{ .icon }} icon-lg mr-3 text-primary"></i>
+            <div>
+              <h3 class="text-white mb-0"><span class="count" data-count="{{ .count }}">0</span>+</h3>
+              <span class="text-white">{{ .title }}</span>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ "<!-- /funfacts -->" | safeHTML }}
+  {{ end }}
+
+  {{ if .Site.Data.homepage.feature.enable }}
+  {{ "<!-- feature -->" | safeHTML }}
+  <section class="section">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-lg-4 offset-lg-2 order-lg-1 order-2">
+          <div class="section-title-border"></div>
+          {{ with .Site.Data.homepage.feature }}
+          <h4 class="section-title-sm">{{ .titleSM }}</h4>
+          <h2 class="section-title">Why They Choose Bexar</h2>
+          <p class="mb-5">{{ .description }}</p>
+          {{ end }}
+          <ul class="list-unstyled">
+            {{ range .Site.Data.homepage.feature.featureItem }}
+            {{ "<!-- feature item -->" | safeHTML }}
+            <li class="d-flex align-items-center mb-5">
+              <div class="text-center mr-4">
+                <div class="icon-bg water-wave"><i class="fa {{ .icon }} icon text-primary"></i></div>
+              </div>
+              <div>
+                <h4>{{ .title }}</h4>
+                {{ .content }}
+              </div>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        <div class="col-lg-5 pr-lg-0 order-lg-2 order-1 mb-5 mb-lg-0">
+          <div class="feature-img-bg box-shadow">
+            <img class="img-fluid w-100" src="{{ with .Site.Data.homepage.feature.image }}{{ . | absURL }}{{ end }}"  onerror="this.src='{{ with .Site.Data.homepage.feature.imageAlt }}{{ . | absURL }}{{ end }}'" alt="feature-image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ "<!-- /feature -->" | safeHTML }}
+  {{ end }}
+
+  {{ if .Site.Data.homepage.service.enable }}
+  {{ partial "service.html" . }}
+  {{ end }}
+
+  {{ if .Site.Data.homepage.team.enable }}
+  {{ partial "team.html" . }}
+  {{ end }}
+
+  {{ if .Site.Data.homepage.project.enable }}
+  {{ "<!-- project -->" | safeHTML }}
+  <section class="section pt-0">
+    <div class="pb-4 bg-gray-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {{ with .Site.Data.homepage.project }}
+            <div class="section-title-border"></div>
+            <h4 class="section-title-sm">{{ .titleSM }}</h4>
+            <h2>{{ .title }}</h2>
+            {{ end }}
+          </div>
+          {{ if .Site.Data.homepage.project.button.enable }}
+          <div class="col-md-4 text-right align-self-end d-md-block d-none">
+            <a href="{{ with .Site.Data.homepage.project.button }}{{ .URL | absURL }}{{ end }}" class="btn btn-primary mb-3 hover-ripple">{{ with .Site.Data.homepage.project.button }}{{ .btnText }}{{ end }}</a>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid px-0">
+      <div class="row no-gutters">
+        {{ range first 4 ( where .Site.Pages "Type" "project")}}
+        {{ "<!-- project-item -->" | safeHTML }}
+        <div class="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+          <div class="project-item">
+            <div class="position-relative mb-4 overflow-hidden">
+              <img src="{{ .Params.Image | absURL }}"  onerror="this.src='{{.Params.ImageAlt | absURL }}'" alt="project thumb" class="img-fluid w-100">
+              <div class="hover-overlay">
+                <a href="{{ .Params.Image | absURL }}" class="venobox"><i class="uni-plus"></i></a>
+              </div>
+            </div>
+            {{ "<!-- project-info -->" | safeHTML }}
+            <div class="ml-4">
+              <h6 class="text-primary">{{ .Params.ProjectType }}</h6>
+                <h4><a class="text-dark" href="{{ .Permalink }}">{{ .Title }}</a></h4>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+    </div>
+  </section>
+  {{ "<!-- /project -->" | safeHTML }}
+  {{ end }}
+
+  {{ if .Site.Data.homepage.testimonial.enable }}
+  {{ partial "testimonial.html" . }}
+  {{ end }}
+
+  {{ if .Site.Params.cta.enable }}
+  {{ "<!-- call to action -->" | safeHTML }}
+  <section class="section overlay-secondary bg-fixed" style="background-image: url('{{ with .Site.Params.cta.bgImage }}{{ . | absURL }} {{end}}'),url('{{ with .Site.Params.cta.bgImageAlt }}{{ . | absURL }} {{end}}');">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-10 col-11 text-center mx-auto">
+        {{ with .Site.Params.cta }} <h2 class="section-title text-white">{{ .title }}</h2> {{ end }}
+          <a href="{{ with .Site.Params.cta.URL }}{{ . | absURL }}{{ end }}" class="btn btn-primary hover-ripple">{{ with .Site.Params.cta.btnText }}{{ . }}{{ end }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ "<!-- /call to action -->" | safeHTML }}
+  {{ end }}
+
+ 
+
+{{ end }}

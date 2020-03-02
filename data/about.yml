@@ -1,0 +1,32 @@
+philosophy:
+  enable : false
+  philosophyItem:
+    - title : "Our Mission"
+      serialNumber: "01"
+      content : "Lorem ipsum dolor sit amet consectetur adip isicing elit sed do eiusmod tempor incididunt ut labore."
+      list:
+        - listItem : "Quality Services"
+        - listItem : "Clients Satisfaction"
+        
+    - title : "Our Approach"
+      serialNumber: "02"
+      content : "Lorem ipsum dolor sit amet consectetur adip isicing elit sed do eiusmod tempor incididunt ut labore."
+      list:
+        - listItem : "Quality Services"
+        - listItem : "Clients Satisfaction"
+        
+    - title : "Our Philosophy"
+      serialNumber: "03"
+      content : "Lorem ipsum dolor sit amet consectetur adip isicing elit sed do eiusmod tempor incididunt ut labore."
+      list:
+        - listItem : "Quality Services"
+        - listItem : "Clients Satisfaction"
+
+about:
+  enable : true
+
+service:
+  enable : false
+
+team: 
+  enable : false

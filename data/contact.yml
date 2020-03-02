@@ -1,0 +1,23 @@
+contactBoxes:
+  enable : true
+  contactBox:
+    - title : "Our Address"
+      icon : "fa-map-marker"
+      addressList:
+        - listItem : "92214-291, Avenida Emília Ferreira, 043 Vila Irene - MA"
+        
+    - title : "Phone Number"
+      icon : "fa-phone"
+      addressList:
+        - listItem : "(003) 104-6706-231"
+        - listItem : "(003) 104-6706-232"
+        
+    - title : "Message Us"
+      icon : "fa-envelope"
+      addressList:
+        - listItem : "info@bexar.com"
+        - listItem : "info@example.com"
+
+contactForm:
+  enable : true
+  formAction : "#" # Contact Form works with formspree.io

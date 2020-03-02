@@ -1,0 +1,36 @@
+slider:
+  enable : true
+sliderItem: 
+  - preTitle : "KEEP YOUR  Identities and credentials managed"
+    title : "MANAGEDPRIV.COM"
+    shortDescription : "Robin Granberg on windows security topics."
+    bgImage : "images/slider/banner-1x.jpg"
+    bgImageAlt : "images/slider/banner-1x.jpg"
+    animation : "fadeInUp"
+    button:
+      enable : false
+      btnText : "more details"
+      URL : "/about"
+      animation : "zoomIn"
+      
+
+# banner feature
+feature :
+  enable : false
+  # Max use 4 item
+  featureItem :
+    - title : "Business Solution"
+      icon : "fa-user"
+      description : "Lorem ipsum dolor sit amet constur adipelit sed."
+      
+    - title : "Market Research"
+      icon : "fa-group"
+      description : "Lorem ipsum dolor sit amet constur adipelit sed."
+      
+    - title : "Business Strategy"
+      icon : "fa-code"
+      description : "Lorem ipsum dolor sit amet constur adipelit sed."
+      
+    - title : "Speed Optimization"
+      icon : "fa-dashboard"
+      description : "Lorem ipsum dolor sit amet constur adipelit sed."

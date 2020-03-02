@@ -1,0 +1,47 @@
+{{ define "main" }}
+
+  {{ partial "page-title.html" . }}
+
+  {{ if .Site.Data.about.philosophy.enable }}
+  {{ "<!-- philosophy -->" | safeHTML }}
+  <section class="section bg-gray position-relative">
+    <div class="container position-relative zindex-1">
+      <div class="row">
+        {{ range .Site.Data.about.philosophy.philosophyItem }}
+        {{ "<!-- philosophy item -->" | safeHTML }}
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h3><span class="text-primary">{{ .serialNumber }}.</span> {{ .title }}</h3>
+          <p>{{ .content }}</p>
+          <ul class="list-styled style-circle">
+            {{ range .list }}
+            <li class="mb-3">{{ .listItem }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    <!-- background shapes -->
+    <img class="img-fluid philosophy-bg-shape" src="{{ `images/backgrounds/about-page-bg.webp` | relURL }}"  onerror="this.src='{{ `images/backgrounds/about-page-bg.png` | relURL }}'" alt="shape">
+    <img class="img-fluid about-bg-shape" src="{{ `images/backgrounds/about-us-3-bg.webp` | relURL }}"  onerror="this.src='{{ `images/backgrounds/about-us-3-bg.png` | relURL }}'" alt="shape">
+  </section>
+  {{ "<!-- /philosophy -->" | safeHTML }}
+  {{ end }}
+
+  {{ if .Site.Data.about.about.enable }}
+  {{ "<!-- about us -->" | safeHTML }}
+  <section class="section">
+    {{ partial "about.html" . }}
+  </section>
+  {{ "<!-- /about us -->" | safeHTML }}
+  {{ end }}
+
+  {{ if .Site.Data.about.service.enable }}
+  {{ partial "service.html" . }}
+  {{ end }}
+
+  {{ if .Site.Data.homepage.team.enable }}
+  {{ partial "team.html" . }}
+  {{ end }}
+
+{{ end }}

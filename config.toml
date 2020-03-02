@@ -1,0 +1,187 @@
+baseURL = "http://demo.themefisher.com/bexer-hugo/"
+languageCode = "en-us"
+title = "Robin Graberg - Managed Privileges"
+theme = "bexar-hugo"
+summaryLength = "10"
+paginate = 6
+    
+ 
+[params]
+logo = "images/logo.png"
+logoAlt = "images/logo-alt.png"
+home = "Home"
+# Meta data
+description = "Managed Privileges"
+author = "robin granberg"
+# google map
+#gmapAPI = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"
+#mapLatitude = "51.5223477"
+#mapLongitude = "-0.1622023"
+#mapMarker = "images/marker.png"
+# Google Analitycs
+#googleAnalitycsID = "Your ID"
+# mailchimp subsciption
+#mailchimpFormAction = "https://themefisher.us9.list-manage.com/subscribe/post?u=f95ece2732a6e9925f2e70a61&amp;id=b1e227529e" # replace this url with yours
+#mailchimpFormName = "b_f95ece2732a6e9925f2e70a61_b1e227529e" # replace this code with yours
+
+[outputs]
+  home = ["HTML", "AMP", "RSS", "JSON"]
+  page = ["HTML"]
+
+[params.quickContact]
+  enable = true
+  
+# Plugins
+[params.plugins]
+
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "plugins/bootstrap/bootstrap.min.css"
+  [[params.plugins.css]]
+  URL = "plugins/slick/slick.css"
+  [[params.plugins.css]]
+  URL = "plugins/fontawesome/font-awesome.min.css"
+  [[params.plugins.css]]
+  URL = "plugins/animate/animate.css"
+  [[params.plugins.css]]
+  URL = "plugins/venobox/venobox.css"
+
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "plugins/jQuery/jquery.min.js"
+  [[params.plugins.js]]
+  URL = "plugins/bootstrap/bootstrap.min.js"
+  [[params.plugins.js]]
+  URL = "plugins/slick/slick.min.js"
+  [[params.plugins.js]]
+  URL = "plugins/google-map/gmap.js"
+  [[params.plugins.js]]
+  URL = "plugins/venobox/venobox.min.js"
+  [[params.plugins.js]]
+  URL = "plugins/modernizer/modernizr.min.js"
+  [[params.plugins.js]]
+  URL = "plugins/filterizr/jquery.filterizr.min.js"
+  [[params.plugins.js]]
+  URL = "plugins/search/fuse.min.js"
+  [[params.plugins.js]]
+  URL = "plugins/search/mark.js"
+  [[params.plugins.js]]
+  URL = "plugins/search/search.js"
+
+# navigation
+[menu]
+    
+  [[menu.main]]
+  name = "About"
+  URL = "/about"
+  weight = 3
+  
+  [[menu.main]]
+  name = "Projects"
+  URL = "/project"
+  weight = 2
+  
+  [[menu.main]]
+  name = "Blog"
+  URL = "/blog"
+  weight = 1
+  
+
+
+
+  # Preloader
+  [params.preloader]
+  enable = true
+
+  # top header
+  [params.topHeader]
+  enable = false
+  email = "info@bexar.com"
+  phone = "1234565525"
+    # social icon
+    [[params.topHeader.icon]]
+      icon = "fa-facebook"
+      URL = "#"
+    [[params.topHeader.icon]]
+      icon = "fa-twitter"
+      URL = "#"
+    [[params.topHeader.icon]]
+      icon = "fa-rss"
+      URL = "#"
+    [[params.topHeader.icon]]
+      icon = "fa-google"
+      URL = "#"
+    [[params.topHeader.icon]]
+      icon = "fa-vimeo"
+      URL = "#"
+
+  # search
+  [params.search]
+  enable = true
+
+  # Navigation get start button
+  [params.navBtn]
+  enable = false
+  btnText = "get started"
+  URL = "/service"
+
+  # call to action
+  [params.cta]
+  enable = false
+  title = "Bexar give the smart solution for your business"
+  bgImage = "images/backgrounds/cta-lg.webp"
+  bgImageAlt = "images/backgrounds/cta-lg.jpg"
+  btnText = "get an quote"
+  URL = "/contact"
+
+  # Footer
+  [params.footer]
+  content = ""
+
+    # follow us on social site
+    [params.footer.followUs]
+    title = "Follow Me On"
+
+      [[params.footer.followUs.socialIcon]]
+      icon = "fa-twitter"
+      URL = "#"
+
+      [[params.footer.followUs.socialIcon]]
+      icon = "fa-linkedin"
+      URL = "#"
+
+
+    
+  # newsletter
+  [params.newsletter]
+  enable = false
+  title = "Subscribe Newsletter"
+
+  # copyright
+  #[params.copyright]
+  #copyright = "A hugo theme by themefisher.com"
+
+[deployment]
+# By default, files are uploaded in an arbitrary order.
+# Files that match the regular expressions in the "Order" list
+# will be uploaded first, in the listed order.
+order = [".jpg$", ".gif$"]
+
+
+[[deployment.targets]]
+# An arbitrary name for this target.
+name = "mydeployment"
+# The Go Cloud Development Kit URL to deploy to. Examples:
+# GCS; see https://gocloud.dev/howto/blob/#gcs
+# URL = "gs://<Bucket Name>"
+
+# Azure Blob Storage; see https://gocloud.dev/howto/blob/#azure
+URL = "azblob://$web"
+
+# You can use a "prefix=" query parameter to target a subfolder of the bucket:
+# URL = "gs://<Bucket Name>?prefix=a/subfolder/"
+
+# If you are using a CloudFront CDN, deploy will invalidate the cache as needed.
+#cloudFrontDistributionID = <ID>
+
+

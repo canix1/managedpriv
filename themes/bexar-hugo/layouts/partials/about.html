@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row justify-content-between align-items-center">
+    {{ with .Site.Data.homepage.about }}
+    <div class="col-md-5 bg-contain" data-background="{{ .bgDots | absURL }}">
+      {{ "<!-- about us image -->" | safeHTML }}
+      <img class="img-fluid w-100" src="{{ .image | absURL }}" onerror="this.src='{{.imageAlt | absURL }}'" alt="About Image">
+    </div>
+    {{ end }}
+    <div class="col-md-6">
+      {{ with .Site.Data.homepage.about }}
+      <div class="section-title-border"></div>
+      <h6 class="section-title-sm">{{ .titleSM }}</h6>
+      <h2 class="section-title">{{ .title }}</h2>
+      <p class="mb-5">{{ .content }}</p>
+      {{ with .button }}
+      <a href="{{ .URL | absURL }}" class="btn btn-primary hover-ripple">{{ .btnText }}</a>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</div>
