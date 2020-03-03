@@ -1,13 +1,15 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
 {{ "<!-- service -->" | safeHTML }}
   <section class="bg-gray-white">
     <div class="section bg-secondary section-bottom-lg">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            {{ with .Site.Data.homepage.service }}
+            {{ with $data.homepage.service }}
             <div class="section-title-border border-center"></div>
-            <h4 class="section-title-sm">{{ .titleSM }}</h4>
-            <h2 class="section-title text-white">{{ .title }}</h2>
+            <h4 class="section-title-sm">{{ .subtitle | markdownify }}</h4>
+            <h2 class="section-title text-white">{{ .title | markdownify }}</h2>
             {{ end }}
           </div>
         </div>
@@ -16,18 +18,10 @@
     <div class="service-wrapper">
       <div class="container">
         <div class="row">
-          {{ range first 3 ( where .Site.Pages "Type" "service") }}
+          {{ range first 3 ( where .Site.RegularPages "Type" "service") }}
           {{ "<!-- service-item -->" | safeHTML }}
           <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-            <div class="card border-0 rounded-0 box-shadow">
-              <img class="card-img-top rounded-0" src="{{ .Params.Image | absURL }}"  onerror="this.src='{{.Params.ImageAlt | absURL }}'" alt="Card image cap">
-              <div class="card-body position-relative">
-                <i class="card-icon fa {{ .Params.Icon }} hover-ripple"></i>
-                <h4 class="card-title"><a class="text-dark" href="{{ .Permalink }}">{{ .Title }}</a></h4>
-                <p class="card-text">{{ .Summary }}</p>
-                <a href="{{ .Permalink }}" class="btn btn-secondary btn-arrow">Read More</a>
-              </div>
-            </div>
+            {{ .Render "service" }}
           </div>
           {{ end }}
         </div>

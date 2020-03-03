@@ -90,28 +90,6 @@ a h5 {
       border-radius: 10px;
       margin-bottom: 20px;
 
-      &::before {
-        position: absolute;
-        content: "";
-        height: 100%;
-        width: 50%;
-        background: $primary-color;
-        border-radius: 10px;
-        right: -60%;
-        top: 0;
-      }
-
-      &::after {
-        position: absolute;
-        content: "";
-        height: 100%;
-        width: 25%;
-        background: $primary-color;
-        border-radius: 10px;
-        right: -100%;
-        top: 0;
-      }
-
       &.border-center {
         margin-left: calc(50% - 27px);
       }
@@ -119,13 +97,6 @@ a h5 {
       &.border-white {
         background: $white;
 
-        &::before {
-          background: $white;
-        }
-
-        &::after {
-          background: $white;
-        }
       }
 
       &.border-inline {
@@ -174,31 +145,13 @@ a h5 {
 .overlay {
   position: relative;
 
-  &::before {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: $black;
-    opacity: .6;
-  }
+
 }
 
 .overlay-secondary {
   position: relative;
 
-  &::before {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: $secondary-color;
-    opacity: .85;
-  }
+
 }
 
 .outline-0 {
@@ -218,8 +171,7 @@ a h5 {
 }
 
 .bg-secondary-darken {
-  //background: darken($color: $secondary-color, $amount: 3) !important;
-  background: $secondary-color !important;
+  background: darken($color: $secondary-color, $amount: 3) !important;
 }
 
 .bg-gray {
@@ -227,7 +179,7 @@ a h5 {
 }
 
 .bg-gray-white {
-  background-image: linear-gradient(to right, $secondary-color 45%, $secondary-color 0%);
+  background-image: linear-gradient(to right, $gray 45%, $white 0%);
 }
 
 .bg-white-gray {
@@ -380,17 +332,7 @@ a.text-dark {
   width: 100px;
   border-radius: 120px 135px 110px 90px;
 
-  &::before {
-    position: absolute;
-    content: "";
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 5px;
-    background: rgba($color: $primary-color, $alpha: .05);
-    border: 2px solid $primary-color;
-    border-radius: 130px 120px 160px 130px;
-  }
+
 
   .icon {
     line-height: 100px;
@@ -404,53 +346,38 @@ a.text-dark {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 
-  &::before {
-    animation-name: water-wave;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-  }
+
 }
 
 @keyframes water-wave {
   0% {
     border-radius: 120px 135px 110px 90px;
 
-    &::before {
-      border-radius: 130px 120px 160px 130px;
-    }
+ 
   }
 
   25% {
     border-radius: 130px 140px 100px 110px;
 
-    &::before {
-      border-radius: 100px 147px 140px 120px;
-    }
+
   }
 
   50% {
     border-radius: 110px 97px 150px 100px;
 
-    &::before {
-      border-radius: 102px 147px 140px 120px;
-    }
+
   }
 
   75% {
     border-radius: 80px 107px 120px 90px;
 
-    &::before {
-      border-radius: 102px 147px 140px 120px;
-    }
+
   }
 
   100% {
     border-radius: 120px 135px 110px 90px;
 
-    &::before {
-      border-radius: 130px 120px 160px 130px;
-    }
+
   }
 }
 
@@ -518,16 +445,7 @@ textarea.form-control-sm {
       padding-left: 20px;
       margin-bottom: 10px;
 
-      &::before {
-        position: absolute;
-        content: "\f10c";
-        font-family: $icon-font;
-        font-size: 14px;
-        left: 0;
-        top: 1px;
-        color: $primary-color;
-        transition: .3s ease;
-      }
+
     }
   }
 

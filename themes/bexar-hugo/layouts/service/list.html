@@ -1,16 +1,18 @@
 {{ define "main" }}
 
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
 {{ partial "page-title.html" . }}
 
 {{ "<!-- service items -->" | safeHTML }}
-<section class="section pb-0">
+<section class="section">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        {{ with .Site.Data.homepage.service }}
+        {{ with $data.homepage.service }}
         <div class="section-title-border border-center"></div>
-        <h4 class="section-title-sm">{{ .titleSM }}</h4>
-        <h2 class="section-title">{{ .title }}</h2>
+        <h4 class="section-title-sm">{{ .subtitle | markdownify }}</h4>
+        <h2 class="section-title">{{ .title | markdownify }}</h2>
         {{ end }}
       </div>
     </div>
@@ -18,87 +20,12 @@
       {{ range .Data.Pages }}
       {{ "<!-- service-item -->" | safeHTML }}
       <div class="col-lg-4 col-sm-6 mb-4">
-        <div class="card border-0 rounded-0 box-shadow">
-          <img class="card-img-top rounded-0" src="{{ .Params.Image | absURL }}"  onerror="this.src='{{.Params.ImageAlt | absURL }}'" alt="Card image cap">
-          <div class="card-body position-relative">
-            <i class="card-icon fa {{ .Params.Icon }} hover-ripple"></i>
-            <h4 class="card-title"><a class="text-dark" href="{{ .Permalink }}">{{ .Title }}</a></h4>
-            <p class="card-text">{{ .Summary }}</p>
-            <a href="{{ .Permalink }}" class="btn btn-secondary btn-arrow">Read More</a>
-          </div>
-        </div>
+        {{ .Render "service" }}
       </div>
       {{ end }}
     </div>
   </div>
 </section>
 {{ "<!-- /service items -->" | safeHTML }}
-
-{{ if .Site.Data.pricing.enable }}
-{{ "<!-- pricing -->" | safeHTML }}
-<section class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center">
-        {{ with .Site.Data.pricing }}
-        <div class="section-title-border border-center"></div>
-        <h4 class="section-title-sm">{{ .titleSM }}</h4>
-        <h2 class="section-title">{{ .title }}</h2>
-        {{ end }}
-      </div>
-    </div>
-    <div class="pricing-container">
-      <div class="pricing-switcher">
-        <p class="fieldset">
-          <input type="radio" name="duration-1" value="monthly" id="monthly-1" checked>
-          <label class="mb-0 monthly pricing-duration active" for="monthly-1">Monthly</label>
-          <input type="radio" name="duration-1" value="yearly" id="yearly-1">
-          <label class="mb-0 yearly pricing-duration" for="yearly-1">Yearly</label>
-          <span class="switch"></span>
-        </p>
-      </div>
-      <ul class="p-0 pricing-list bounce-invert">
-        {{ range $index, $element := .Site.Data.pricing.pricingTable }}
-        <li>
-          <ul class="p-0 pricing-wrapper">
-            <li data-type="monthly" class="is-visible">
-              {{ "<!-- pricing table -->" | safeHTML }}
-              <div class="py-5 px-4 text-center border-left border-right border-color pricing-table {{if eq $index 1}}active{{end}}">
-                <h4 class="section-title-sm">{{ .monthlyPack }}</h4>
-                <h2>{{ .monthlyValue }}</h2>
-                <h5 class="mb-4">{{ .monthlyDescription }}</h5>
-                <div class="border-bottom border-color mb-5"></div>
-                <ul class="list-unstyled mb-5">
-                  {{ range .monthlyService }}
-                  <li class="mb-3">{{ .serviceItem }}</li>
-                  {{ end }}
-                </ul>
-                <a href="{{ .monthlyButtonURL }}" class="btn hover-ripple {{if eq $index 1}} btn-light ripple-white {{ else }} btn-light btn-light-alt {{end}}">Select Plan</a>
-              </div>
-            </li>
-            <li data-type="yearly" class="is-hidden">
-              {{ "<!-- pricing table -->" | safeHTML }}
-              <div class="py-5 px-4 text-center border-left border-right border-color pricing-table {{if eq $index 1}}active{{end}}">
-                <h4 class="section-title-sm">{{ .yearlyPack }}</h4>
-                <h2>{{ .yearlyValue }}</h2>
-                <h5 class="mb-4">{{ .yearlyDescription }}</h5>
-                <div class="border-bottom border-color mb-5"></div>
-                <ul class="list-unstyled mb-5">
-                  {{ range .yearlyService }}
-                  <li class="mb-3">{{ .serviceItem }}</li>
-                  {{ end }}
-                </ul>
-                <a href="{{ .yearlyButtonURL }}" class="btn hover-ripple {{if eq $index 1}} btn-light ripple-white {{ else }} btn-light btn-light-alt {{end}}">Select Plan</a>
-              </div>
-            </li>
-          </ul>
-        </li>
-        {{ end }}
-      </ul>
-    </div>
-  </div>
-</section>
-{{ "<!-- /pricing -->" | safeHTML }}
-{{ end }}
 
 {{ end }}

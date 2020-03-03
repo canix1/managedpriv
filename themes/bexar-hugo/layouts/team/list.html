@@ -1,17 +1,18 @@
 {{ define "main" }}
 
-  {{ partial "page-title.html" . }}
+{{ $data := index .Site.Data .Site.Language.Lang }}
 
-  
+{{ partial "page-title.html" . }}
+
 {{ "<!-- team member -->" | safeHTML }}
 <section class="section">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        {{ with .Site.Data.homepage.team }}
+        {{ with $data.homepage.team }}
         <div class="section-title-border border-center"></div>
-        <h4 class="section-title-sm">{{ .titleSM }}</h4>
-        <h2 class="section-title">{{ .title | safeHTML }}</h2>
+        <h4 class="section-title-sm">{{ .subtitle | markdownify }}</h4>
+        <h2 class="section-title">{{ .title | markdownify }}</h2>
         {{ end }}
       </div>
     </div>
@@ -19,28 +20,13 @@
       {{ range .Data.Pages }}
       {{ "<!-- team member -->" | safeHTML }}
       <div class="col-lg-4 col-sm-6 mb-5">
-        <div class="team-member text-center">
-          <div class="team-member-img position-relative mb-5">
-            <img class="img-fluid w-100" src="{{ .Params.Image | absURL }}"  onerror="this.src='{{.Params.ImageAlt | absURL }}'" alt="team-member">
-            <div class="hover-icon py-4">
-              <ul class="list-inline social-icon">
-                {{ range .Params.SocialIcon }}
-                <li class="list-inline-item">
-                  <a href="#" class="hover-ripple ripple-white"><i class="fa {{ .icon }}"></i></a>
-                </li>
-                {{ end }}
-              </ul>
-            </div>
-          </div>
-          <h4>{{ .Title }}</h4>
-          <span>{{ .Params.Designation }}</span>
-        </div>
+        {{ .Render "team" }}
       </div>
       {{ end }}
     </div>
   </div>
 </section>
 {{ "<!-- /team member -->" | safeHTML }}
-  
+
 
 {{ end }}
