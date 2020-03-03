@@ -9,7 +9,7 @@ summaryLength = "10"
 # disqus short name
 disqusShortname = "managedpriv.com" # get your shortname form here : https://disqus.com
 # disable language
-disableLanguages = [] # desable language from here
+disableLanguages = [] # desable language from here nnnn
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]
