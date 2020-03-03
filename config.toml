@@ -116,15 +116,15 @@ map_marker = "images/marker.png"
 ########################### social icon ############################
 [[params.social]]
 icon = "fa-twitter"
-URL = "https://twitter.com/ipcdollar1"
+link = "https://twitter.com/ipcdollar1"
 
 [[params.social]]
 icon = "fa-github"
-URL = "https://github.com/canix1"
+link = "https://github.com/canix1"
 
 [[params.social]]
 icon = "fa-linkedin"
-URL = "www.linkedin.com/in/robin-granberg"
+link = "https://www.linkedin.com/in/robin-granberg"
 
 ################################### English language #####################################
 [Languages.en]
