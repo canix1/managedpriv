@@ -1,10 +1,10 @@
 ########################### Default configuration ######################
-baseURL = "https://canix1.github.io/"
+baseURL = "https://canix1.github.io/managedpriv.github.io"
 title = "Robin Graberg - Managed Privileges"
 theme = "bexar-hugo"
 # post pagination
 paginate = "6"
-# post excerpt
+# post excerpts
 summaryLength = "10"
 # disqus short name
 disqusShortname = "managedpriv.com" # get your shortname form here : https://disqus.com
