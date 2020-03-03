@@ -1,5 +1,5 @@
 ########################### Default configuration ######################
-baseURL = "https://examplesite.com/"
+baseURL = "https://canix1.github.io/managedpriv.github.io/"
 title = "Robin Graberg - Managed Privileges"
 theme = "bexar-hugo"
 # post pagination
