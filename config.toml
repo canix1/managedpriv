@@ -1,5 +1,5 @@
 ########################### Default configuration ######################
-baseURL = "/"
+baseURL = "https://managedpriv.com/"
 title = "Robin Graberg - Managed Privileges"
 theme = "bexar-hugo"
 # post pagination
