@@ -8,6 +8,7 @@ paginate = "6"
 summaryLength = "10"
 # disqus short name
 disqusShortname = "managedpriv-com" # get your shortname form here : https://disqus.com # Alt? https://managedpriv-com.disqus.com/embed.js
+disqus_identifier = "disqus_TltZsyQ0Kq"
 # disable language
 disableLanguages = [] # desable language from here nnnn
 
