@@ -28,7 +28,6 @@
         </div>
         <!-- comments -->
         {{ if .Site.DisqusShortname }}
-        <div class="mt-5">
           <div id="disqus_thread"></div>
           <script>
           (function() {
@@ -39,7 +38,6 @@
           })();
           </script>
           <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        </div>
         {{ end }}
       </div>
       {{ partial "sidebar.html" . }}
