@@ -7,7 +7,7 @@ paginate = "6"
 # post excerpts
 summaryLength = "10"
 # disqus short name
-disqusShortname = "managedpriv.com" # get your shortname form here : https://disqus.com
+disqusShortname = "https://managedpriv-com.disqus.com" # get your shortname form here : https://disqus.com # Alt? https://managedpriv-com.disqus.com/embed.js
 # disable language
 disableLanguages = [] # desable language from here nnnn
 
