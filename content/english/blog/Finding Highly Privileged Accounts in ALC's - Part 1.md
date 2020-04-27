@@ -19,18 +19,18 @@ type: "post"
 
 
 ---
-When trying to identify the highly privileged accounts in an Active Directory you might start with the members of the built-in administrative groups like Domain Admin etc. But you can't stop there since there are many places you can grant accounts permissions and privileges throughout Active Directory Forest. I will not list all possible locations where permissions can make an account a high value target for an attacker but instead focus on a method to detect highly privileged accounts in access control lists (ACL) on Active Directory objects.
+When trying to identify the highly privileged accounts in an Active Directory you might start with the members of the built-in administrative groups like Domain Admin etc. But you can't stop there since there are many places you can grant accounts permissions and privileges throughout an Active Directory Forest. I will not list all possible locations where permissions can make an account a high value target for an attacker but instead focus on a method to detect highly privileged accounts in access control lists (ACL) on Active Directory objects.
 
-A long time ago I wrote a blog post on examples of these object in Active Directory where you should pay an extra attention to: 
+A long time ago I wrote a blog post on examples of these objects in Active Directory where you should pay extra attention: 
 https://docs.microsoft.com/en-us/archive/blogs/pfesweplat/forensics-active-directory-acl-investigation
 
-Let's start off with an obvious example… the domain root. If a user have powerful permissions at the domain root they can practices their given right on all the objects below, except for the ones that are protected by [AdminSDHolder](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/dd3d29f3-8e1e-4e8c-a210-9eaef3abd628). Normally you don't need to delegate permission at this level, even though it's very common because it's convenient and easy. Best practice is only to delegate permissions at the domain level that only can be delegated here and delegate all other permissions on an OU level, near the scope of management. For an example of a frequently used permission that can only be delegated at the domain level is "Replicated Directory Changes", which some applications might require to keep an replicated copy of the directory.
+Let's start off with an obvious example… the domain root. If a group of users has powerful permissions at the domain root they can practice their given right on all the objects below, except for the ones that are protected by [AdminSDHolder](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/dd3d29f3-8e1e-4e8c-a210-9eaef3abd628). Normally you don't need to delegate permission at this level, even though it's very common because it's convenient and easy. Best practice is to delegate permissions at the domain level that only can be delegated here and delegate all other permissions on an OU level, near the scope of management. For example a frequently used permission that can only be delegated at the domain level is "Replicated Directory Changes", which some applications might require to keep a replicated copy of the directory.
 
 ### Objectives
 
 You want to keep your highly privileged accounts managed and to do that you need to identify them.
 
-One of the activities in to do that is to list accounts with critical permissions at the domain root.
+One of the activities in doing that is to list accounts with critical permissions at the domain root.
 
 **1.** Examine access control list and understand what permissions are critical.
 
@@ -43,7 +43,7 @@ One of the activities in to do that is to list accounts with critical permission
 To do that you can use the [AD ACL Scanner](https://github.com/canix1/ADACLScanner). It has both a GUI and a command line mode, cool right? :)
 First we will focus on using the command line mode since you easily can pipe the result to any other command you would like to use. 
 
-Both the command line and the GUI support creating reports in CSV,HTML and EXCEL. For Excel reports you don't need to have the Microsoft Office installed. Simply just install the PowerShell module [ImportExcel](https://github.com/dfinke/ImportExcel) by **Doug Finke**. Thanks Doug!
+Both the command line and the GUI support creating reports in CSV, HTML and EXCEL. For Excel reports you don't need to have Microsoft Office installed. Simply just install the PowerShell module [ImportExcel](https://github.com/dfinke/ImportExcel) by **Doug Finke**. Thanks Doug!
 
 #### PowerShell Command
 If you run [ADACLScan.ps1](https://github.com/canix1/ADACLScanner) without parameters it will launch the graphical interface, but if you add the properly selected parameters you will run in command mode. 
@@ -86,7 +86,7 @@ Ok, Now it's just some custom ACE's left. Wow, that's much easier. Right?
 
 Well, the result contains groups and we need to know what user accounts are critical to the domain root.
 
-**We need to know who's member of these groups... and the nested groups... and the groups nested of these... and so on... ***Sigh!*****
+**We need to know who is member of these groups... and the nested groups... and the groups nested of these... and so on... ***Sigh!*****
 
 Let's fix that! Just add **-RecursiveFind**.
 
@@ -106,7 +106,7 @@ Maybe your results won't be this obvious but the account name are often a starti
 
 
 #### GRAPHICAL USER INTERFACE
-This clip show how to do the same thing from the graphical user interface. It's really easy!
+This clip shows how to do the same thing from the graphical user interface. It's really easy!
 
 Start ADACLScan.ps1 by either right-clicking it and select **Run with PowerShell** or run the following in the powershell window:
 ```powershell
