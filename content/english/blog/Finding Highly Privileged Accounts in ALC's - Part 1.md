@@ -13,7 +13,7 @@ image_webp: "images/blog/powerfullaccounts.jpg"
 author: "Robin Granberg"
 # taxonomies
 categories: ["ACL","AD ACL Scanner","Active Directory"]
-tags: ["Security","Active directory","ACL"]
+tags: ["Security","Active directory","ACL","Assessment","Privileged Account"]
 # type
 type: "post"
 
@@ -119,7 +119,7 @@ Start ADACLScan.ps1 by either right-clicking it and select **Run with PowerShell
 ### Summary
 In this blog post I covered how to scan the domain root of a domain and identify the accounts you might otherwise have missed when listing highly privileged and sensitive accounts in your domain.
 
-You can of course run this command through the whole Active Directory but it might take while, especially if you use excessive group nesting with groups that have many members.
+You can of course run this command through the whole Active Directory but it might take a while, especially if you use excessive group nesting with groups that have many members.
 
 Don't stop with your built-in groups when assessing your environment. You will probably have users with critical permissions delegated without being member of these groups.
 

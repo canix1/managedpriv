@@ -20,7 +20,7 @@ type: "post"
 
 ---
 
-<b>This is a repost of my previous post at the no longer existing blog<div style="display: inline">http<span></span>://<span></span>blogs.technet.com/b/pfesweplat/archive/2012/12/11/do-you-allow-blank-passwords-in-your-environment.aspx</div></b>
+This is a repost of my previous post at: https://docs.microsoft.com/en-us/archive/blogs/pfesweplat/do-you-allow-blank-passwords-in-your-domain. My blog posts at Microsoft was temporarly deleted so just in case I re-post this one here.
 <!--more-->
 
 Do you or did you back in the days use your own code or a third party tool to create user accounts that did not update the userAccountControl attribute after the account was created? 
@@ -30,16 +30,16 @@ Why! Because user objects are allowed blank passwords by default when created, s
  <!--more-->
 
 This is the default setting of userAccountControl at user object creation:
-userAccountControl: 0x222 = (<b>ACCOUNTDISABLE | PASSWD_NOTREQD | NORMAL_ACCOUNT</b>);
+userAccountControl: 0x222 = (**ACCOUNTDISABLE | PASSWD_NOTREQD | NORMAL_ACCOUNT**);
  <!--more-->
 
 ## How does this setting affect my environment?
 <!--more-->
 
-<b>Q:</b> We have a password policy in our domain that does not allow blank passwords, are we protected from blank passwords?
+**Q:** We have a password policy in our domain that does not allow blank passwords, are we protected from blank passwords?
  <!--more-->
 
-<b>A:</b> No, this setting overrides the password policy in the domain or your fine grained password policy when you do <b>reset password</b> operations.
+**A:** No, this setting overrides the password policy in the domain or your fine grained password policy when you do **reset password** operations.
 <!--more-->
  
 So when is the "blank password" setting on user accounts effective:
@@ -48,7 +48,7 @@ So when is the "blank password" setting on user accounts effective:
 When users are delegated the permissions to do password resets on user accounts with ADS_UF_PASSWD_NOTREQD, they can set a blank password.
 <!--more-->
  
-A normal change password procedure by a user do not follow the <b>ADS_UF_PASSWD_NOTREQD</b>, it will follow the password policy in your domain or fine grained password policy if you got defined for the user. 
+A normal change password procedure by a user do not follow the **ADS_UF_PASSWD_NOTREQD**, it will follow the password policy in your domain or fine grained password policy if you got defined for the user. 
 <!--more-->
 
 So let say that an user with the delegate right to do password reset accidentally press OK in the password reset dialog box without the "User must change password at next logon" or someone in your organization with permissions to create user objects accentually runs a script that sets blank password.  Then you will have accounts in you domain with no password.
@@ -61,11 +61,11 @@ The easiest way to do it is to do a search with ADUC (Active Directory Users and
 <!--more-->
 
 1. Right click the domain root.
-2. Select <b>Find....</b>
-3. In the Find: drop down box select <b>Custom Search</b>.
-4. Click the <b>Advanced</b> tab.
-5. In the <b>Enter LDAP Query:</b> field type: <b>(&(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=32))</b>.
-6. Click <b>Find Now</b>.
+2. Select **Find....**
+3. In the Find: drop down box select **Custom Search**.
+4. Click the **Advanced** tab.
+5. In the **Enter LDAP Query:** field type: **(&(objectCategory=person)(objectClass=user)(userAccountControl:1.2.840.113556.1.4.803:=32))**.
+6. Click **Find Now**.
 <!--more-->
 
 ## How to create users
@@ -74,7 +74,7 @@ The easiest way to do it is to do a search with ADUC (Active Directory Users and
 To create users without allowing blank passwords you must deal with the userAccountContol values:
 <!--more-->
 
-"When a new user account is created, the [userAccountControl](https://docs.microsoft.com/en-us/windows/desktop/ADSchema/a-useraccountcontrol)  attribute for the account automatically has the <b>UF_PASSWD_NOTREQD</b> flag set, which indicates that no password is required for the account. If the security policies of the domain that the account is created in requires a password for all user accounts, then the <b>UF_PASSWD_NOTREQD</b> flag must be removed from the userAccountControl attribute for the account."
+"When a new user account is created, the [userAccountControl](https://docs.microsoft.com/en-us/windows/desktop/ADSchema/a-useraccountcontrol)  attribute for the account automatically has the **UF_PASSWD_NOTREQD** flag set, which indicates that no password is required for the account. If the security policies of the domain that the account is created in requires a password for all user accounts, then the **UF_PASSWD_NOTREQD** flag must be removed from the userAccountControl attribute for the account."
 <!--more-->
 
 Here you can read on how to create user accounts:
@@ -90,7 +90,7 @@ PASSWD_NOTREQD flag:
 | 00000000000000000000000000100000 | 32 | 0x0020 | H20 | 0x320020 | ADS_UF_PASSWD_NOTREQD |
 <!--more-->
 
-This Vbscript code example will create a user with UF_PASSWD_NOTREQD. <b>The user will be allowed using blank passwords</b>.
+This Vbscript code example will create a user with UF_PASSWD_NOTREQD. **The user will be allowed using blank passwords**.
 <!--more-->
 
 {{< highlight vb >}}
@@ -133,13 +133,13 @@ objUser.SetInfo
 Well, you can run a script to test every account against a blank password or why not find users with passwords that don't comply with the password policy and remove the user setting for other users at the same time? :)
 <!--more-->
 
-Here's a code-sample that remove the <b>ADS_UF_PASSWD_NOTREQD</b>. If a user has a blank password the script will report an error stating it does not follow the password policy for the domain, as long as you have a password policy in the domain that requires minimum length above zero characters.
+Here's a code-sample that remove the **ADS_UF_PASSWD_NOTREQD**. If a user has a blank password the script will report an error stating it does not follow the password policy for the domain, as long as you have a password policy in the domain that requires minimum length above zero characters.
 If the script succeeds it will also report the status of the account, since if the account is also disabled it still could have a blank password.
 <!--more-->
 You could test your environment with this code-sample and review the output.
 <!--more-->
 
-Hopefully you do not have accounts with <b>ADS_UF_PASSWD_NOTREQD</b>. If you do you follow this procedure to find them.
+Hopefully you do not have accounts with **ADS_UF_PASSWD_NOTREQD**. If you do you follow this procedure to find them.
 <!--more-->
 
 You could still of course have accounts with blank passwords in case you had a domain password policy with no minimum password length. To remediate you have to make sure your password policies are in line with you security policy and that users are required to change their passwords and do not have "Password never expires" ticked in.
