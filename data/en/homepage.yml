@@ -33,7 +33,7 @@ about:
   enable : false
   subtitle : "About Me"
   title : "Robin Granberg"
-  content : "My name is Robin Granberg. I have been working with IT for 20 years and been focusing on IT security for the last seven years."
+  content : "My name is Robin Granberg. I have been working with IT for 20 years and been focusing on IT security for the last seven years. I'm passionate about security delegation models and RBAC on-prem and in the cloud."
   bg_image : "images/backgrounds/about-us-bg.png"
   image_webp : "images/about/about-us.webp"
   image : "images/about/about-us.png"

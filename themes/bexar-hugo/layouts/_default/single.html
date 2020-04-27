@@ -12,6 +12,7 @@
           <img src="{{ .Params.Image_webp | absURL }}"  onerror="this.src='{{.Params.Image | absURL }}'" alt="post thumb" class="img-fluid w-100">
           {{ with .Params.Categories }}{{range first 1 .}} <div class="card-type">{{ . | title }}</div>{{ end }}{{ end }}
         </div>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false"><img src="../../images/tweet.png" width="62" height="24"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>        
         <div class="card-meta text-uppercase mb-2">by <strong class="text-dark">{{ .Params.Author }}</strong>/ on <strong class="text-dark">{{ .PublishDate.Format "02 Jan 2006" }}</strong></div>
         <h2>{{ .Title }}</h2>
         <div class="content">
