@@ -1,6 +1,6 @@
 ---
 title: "Finding Highly Privileged Accounts in ALC's - Part 1"
-date: 2020-04-26T10:47:55+06:00
+date: 2020-04-27T10:47:55+06:00
 # meta description
 description: "Detecting powerfull accounts by ACL's"
 # page title background image
@@ -19,12 +19,12 @@ type: "post"
 
 
 ---
-When trying to identify the highly privileged accounts in an Active Directory you might start with the members of the built-in administrative groups like Domain Admin etc. But you can't stop there since there are many places you can grant accounts permissions and privileges throughout an Active Directory Forest. I will not list all possible locations where permissions can make an account a high value target for an attacker but instead focus on a method to detect highly privileged accounts in access control lists (ACL) on Active Directory objects.
+When trying to identify the highly privileged accounts in an Active Directory you might start with the members of the built-in administrative groups like Domain Admin etc. But you cannot stop there since there are many places you can grant accounts permissions and privileges throughout an Active Directory Forest. I will not list all possible locations where permissions can make an account a high value target for an attacker but instead focus on a method to detect highly privileged accounts in access control lists (ACL) on Active Directory objects.
 
 A long time ago I wrote a blog post on examples of these objects in Active Directory where you should pay extra attention: 
 https://docs.microsoft.com/en-us/archive/blogs/pfesweplat/forensics-active-directory-acl-investigation
 
-Let's start off with an obvious example… the domain root. If a group of users has powerful permissions at the domain root they can practice their given right on all the objects below, except for the ones that are protected by [AdminSDHolder](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/dd3d29f3-8e1e-4e8c-a210-9eaef3abd628). Normally you don't need to delegate permission at this level, even though it's very common because it's convenient and easy. Best practice is to delegate permissions at the domain level that only can be delegated here and delegate all other permissions on an OU level, near the scope of management. For example a frequently used permission that can only be delegated at the domain level is "Replicated Directory Changes", which some applications might require to keep a replicated copy of the directory.
+Let's start off with an obvious example… the domain root. If a group of users has powerful permissions at the domain root they can practice their given right on all the objects below, except for the ones that are protected by [AdminSDHolder](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/dd3d29f3-8e1e-4e8c-a210-9eaef3abd628). Normally you do not need to delegate permission at this level, even though it's very common because it's convenient and easy. Best practice is to delegate permissions at the domain level that only can be delegated here and delegate all other permissions on an OU level, near the scope of management. For example a frequently used permission that can only be delegated at the domain level is "Replicating Directory Changes", which some applications might require to keep a replicated copy of the directory.
 
 ### Objectives
 
@@ -41,14 +41,14 @@ One of the activities in doing that is to list accounts with critical permission
 ### FILTERING ACE's
 
 To do that you can use the [AD ACL Scanner](https://github.com/canix1/ADACLScanner). It has both a GUI and a command line mode, cool right? :)
-First we will focus on using the command line mode since you easily can pipe the result to any other command you would like to use. 
+First, we will focus on using the command line mode since you easily can pipe the result to any other command you would like to use. 
 
 Both the command line and the GUI support creating reports in CSV, HTML and EXCEL. For Excel reports you don't need to have Microsoft Office installed. Simply just install the PowerShell module [ImportExcel](https://github.com/dfinke/ImportExcel) by **Doug Finke**. Thanks Doug!
 
 #### PowerShell Command
 If you run [ADACLScan.ps1](https://github.com/canix1/ADACLScanner) without parameters it will launch the graphical interface, but if you add the properly selected parameters you will run in command mode. 
 
-To run in command mode you must add the **-base** (or the alias for the same **-b**) parameter and define a starting point using the distinguished name. I will use **dc=contoso,dc=com** which is the root of my domain.
+To run in command mode, you must add the **-base** (or the alias for the same **-b**) parameter and define a starting point using the distinguished name. I will use **dc=contoso,dc=com** which is the root of my domain.
 ```powershell
 .\ADACLScan.ps1 -base "dc=contoso,dc=com"
 ```
@@ -63,9 +63,9 @@ To do that we run:
 
 And as you can see, we only received the critical permissions.
 
-But this result contains a lot of expected users an groups.
+But this result contains a lot of expected users and groups.
 
-***Can we exclude the default permissions? - Yes we can!***
+***Can we exclude the default permissions? - Yes, we can!***
 
 Add the parameter **-SkipDefaults** to filter the result from default permissions.
 
@@ -73,7 +73,7 @@ Add the parameter **-SkipDefaults** to filter the result from default permission
 .\ADACLScan.ps1 -b "DC=contoso,DC=com" -Criticality Critical -SkipDefaults | ft
 ```
 {{< image src="../../images/blog/Step2.webp" srcAlt="../../images/blog/Step2.png" >}}
-Now we have a much shorter list to analyze. In our scenario we have good control of the built-in groups so we are not interested in listing them here. Both **Incoming Forest Trust Builders** and **Clonable Domain Controllers** are groups we monitor and keep track of.
+Now we have a much shorter list to analyze. In our scenario we have good control of the built-in groups, so we are not interested in listing them here. Both **Incoming Forest Trust Builders** and **Clonable Domain Controllers** are groups we monitor and keep track of.
 
 ***Can we ignore these built-in groups? - Sure!***
 
@@ -102,13 +102,13 @@ You can filter the recursive search to only return users (by default all objects
 .\ADACLScan.ps1 -b "DC=contoso,DC=com" -Criticality Critical -SkipDefaults -SkipBuiltIn -RecursiveFind -RecursiveObjectType user | ft
 ```
 {{< image src="../../images/blog/Step5.webp" srcAlt="../../images/blog/Step5.png" >}}
-Maybe your results won't be this obvious but the account name are often a starting point for digging deeper. In this case the user MaliciouseActor really sticks out :)
+Maybe your results won't be this obvious, but the account name are often a starting point for digging deeper. In this case the user MaliciouseActor really sticks out :)
 
 
 #### GRAPHICAL USER INTERFACE
 This clip shows how to do the same thing from the graphical user interface. It's really easy!
 
-Start ADACLScan.ps1 by either right-clicking it and select **Run with PowerShell** or run the following in the powershell window:
+Start **ADACLScan.ps1** by either right-clicking it and select **Run with PowerShell** or run the following in the PowerShell window:
 ```powershell
 .\ADACLScan.ps1
 ```
@@ -119,7 +119,7 @@ Start ADACLScan.ps1 by either right-clicking it and select **Run with PowerShell
 ### Summary
 In this blog post I covered how to scan the domain root of a domain and identify the accounts you might otherwise have missed when listing highly privileged and sensitive accounts in your domain.
 
-You can of course run this command through the whole Active Directory but it might take a while, especially if you use excessive group nesting with groups that have many members.
+You can of course run this command through the whole Active Directory, but it might take a while especially if you use excessive group nesting with groups that have many members.
 
 Don't stop with your built-in groups when assessing your environment. You will probably have users with critical permissions delegated without being member of these groups.
 
