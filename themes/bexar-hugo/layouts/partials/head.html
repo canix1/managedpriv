@@ -26,4 +26,9 @@
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
   <meta property="og:image" content="{{ .Params.Image_webp | absURL }}"  />
 
+  <meta name="twitter:title" content="{{ .Title }}">
+  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+  <meta name="twitter:image" content=" http://euro-travel-example.com/thumbnail.jpg">
+  <meta name="twitter:card" content="{{ .Params.Image_webp | absURL }}">
+
 </head>
