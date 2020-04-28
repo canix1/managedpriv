@@ -1,5 +1,5 @@
 ---
-title: "Finding Highly Privileged Accounts in ALC's - Part 1"
+title: "Finding Highly Privileged Accounts in ACL's - Part 1"
 date: 2020-04-27T10:47:55+06:00
 # meta description
 description: "Detecting powerfull accounts by ACL's"
