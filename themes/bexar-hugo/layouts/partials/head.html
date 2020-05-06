@@ -24,10 +24,10 @@
 
   <meta property="og:title" content="{{ .Title }}" />
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
-  <meta property="og:url" content="{{ .link | absURL }}">
-  <meta property="og:image" content="{{ .Params.Image_webp | absURL }}"  />
-  <meta property="og:image:alt" content="managedpriv.com">
-  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:image" content="{{ .Params.Image_webp | absURL }}" />
+  <meta property="og:image:alt" content="managedpriv.com" />
+  <meta property="og:type" content="website" />
 
   <meta name="twitter:title" content="{{ .Title }}">
   <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
