@@ -1,6 +1,6 @@
 ---
 title: "Finding Highly Privileged Accounts in ACL's - Part 2 - GROUP POLICY"
-date: 2020-05-16T21:58:12+06:00
+date: 2020-06-10T15:58:12+06:00
 # meta description
 description: "Detecting powerfull accounts by ACL's"
 # page title background image
