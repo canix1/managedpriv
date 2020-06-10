@@ -31,7 +31,7 @@ Any accounts having control over group policies at these locations owns the doma
 These accounts are Tier 0 accounts and should be treated as the same. 
 
 If you are not familiar with  the Tier Model and Active Directory you must read up on it.
-For mor information on the Tier Model see https://aka.ms/tiermodel
+For more information on the Tier Model see https://aka.ms/tiermodel
 
 ### Objectives
     
