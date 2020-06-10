@@ -194,4 +194,4 @@ First, we identified the persistence created with the account **CONTOSO\APT29**.
 Secondly, we identified the privilege creep created by inappropriate nesting of security groups. The user **joe**, a disgruntled employee, had unintentional control over the domain controllers. 
 
 #### Conclusion
-Create clear picture of your current security posture and make sure your SIEM create incidents for modifications of sensitive ACL's and groups.
+Create a clear picture of your current security posture and make sure your SIEM create incidents for modifications of sensitive ACL's and groups.
