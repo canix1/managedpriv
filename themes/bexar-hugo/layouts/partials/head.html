@@ -22,16 +22,12 @@
   <link rel="shortcut icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
   <link rel="icon" href="{{ `images/favicon.png` | absURL }} " type="image/x-icon">
 
+  <meta name="twitter:card" content="{{ .Title }}">
+  <meta name="twitter:site" content="managedpriv.com" >
+  
+  <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:title" content="{{ .Title }}" />
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
-  <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:image" content="{{ .Params.Image_webp | absURL }}" />
-  <meta property="og:image:alt" content="managedpriv.com" />
-  <meta property="og:type" content="website" />
-
-  <meta name="twitter:title" content="{{ .Title }}">
-  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
-  <meta name="twitter:image" content="{{ .Params.Image_webp | absURL }}">
-  <meta name="twitter:card" content="{{ .Title }}">
 
 </head>
