@@ -1,6 +1,6 @@
     ---
 title: "Exposing Azure AD Roles with privileged access groups"
-date: 2021-02-11T14:50:12+06:00
+date: 2021-02-12T12:45:32+06:00
 # meta description
 description: "Explains how privileged access can introduce a new attack path"
 # page title background image
