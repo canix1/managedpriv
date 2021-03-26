@@ -89,17 +89,18 @@ I have found that Azure AD Custom Roles and Azure Custom Roles behave the same a
 
 Column headings represent the objects that can have members. Table rows contain the objects that are potential members.
 
+****Updated 26 Mars 2021**
 
 | Possible member        | AAD Role      | Az Role  | AAD Security Group  | *AAD Security Group /W AAD Roles  | AAD M365 Group | *AAD M365 Group /W AAD Roles|Synced Group|
 | ------------- |:-------------:| -----:| -----:| -----:| -----:| -----:| -----:|
-| User                        |    P |    P |    D |    P |    P |    P |    - |
-| Synced User                 |    P |    P |    D |    P |    P |    P |    D |
+| User                        |    P |    P |    D |    P |    D |    P |    - |
+| Synced User                 |    P |    P |    D |    P |    D |    P |    D |
 | AAD Role                    | -    |    - |    - |    - |    - |    - |    - |
 | AZ Role                     |    - |    - |    - |    - |    - |    - |    - |
 | ADD Security Group                   |    - |    P |    D |    P |    - |    P |    - |
 | AAD Security Group /W AAD Roles       |    P |    P |    D |    P |    - |    P |    - |
-| AAD M365 Group              |    - |    P |    D |    P |    - |    P |    - |
-| AAD M365 Group /W AAD Roles  |    P |    P |    D |    P |    - |    P |    - |
+| AAD M365 Group              |    - |    P |    - |    P |    - |    P |    - |
+| AAD M365 Group /W AAD Roles  |    P |    P |    - |    P |    - |    P |    - |
 | Synced Group                |    - |    P |    D |    P |    - |    P |    - |
 
 * P = Active/eligible assignment possible with PIM
@@ -187,7 +188,9 @@ Exposure araises from the fact that:
 * \- Nesting groups in roles moves the control to other admins outside of PIM
 
   
-I draw a simple [Bloodhound](https://github.com/BloodHoundAD/BloodHound)-like attack graph bellow go give you an example of control paths that exist. This picture is far from the full graph of possible attack paths.
+I draw a simple [Bloodhound](https://github.com/BloodHoundAD/BloodHound)-like attack graph bellow go give you an example of control paths that exist. This picture is far from the full graph of possible attack paths.  
+
+****Updated 26 Mars 2021**
 
 |{{< image src="../../images/blog/PIMNesting8.webp" srcAlt="../../images/blog/PIMNesting8.png" >}}|
 | ------ |   
