@@ -89,7 +89,7 @@ The user must have a matching Authentication Silo claim with the host, called **
 
 It’s not required to enable support for Claims on the KDC (Domain Controller) or the Kerberos client since failure is the goal.
 
-I have built a script for this (**Block-InboundOneWayTrustAccount.ps1**). The tool list all one-way inbound trusts and check if the trust account is protected with an Authentication Policy. If there are one-way inbound trusts and the trust accounts is are not protected, you will be asked for each account if you like to protect it.
+I have built a script for this [**Block-InboundOneWayTrustAccount.ps1** https://github.com/canix1/Block-InboundOneWayTrustAccount](https://github.com/canix1/Block-InboundOneWayTrustAccount). The tool list all one-way inbound trusts and check if the trust account is protected with an Authentication Policy. If there are one-way inbound trusts and the trust accounts is are not protected, you will be asked for each account if you like to protect it.
 
 ```powershell
 .\Block-InboundOneWayTrustAccount.ps1 -protect
