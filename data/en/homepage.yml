@@ -6,8 +6,8 @@ slider:
     - subtitle : "KEEP YOUR  Identities and credentials managed"
       title : "Robin Granberg"
       content : " on IT security topics"
-      bg_image_webp : "images/slider/banner-1x.webp"
-      bg_image : "images/slider/banner-1x.jpg"
+      bg_image_webp : "images/slider/IBM360.webp"
+      bg_image : "images/slider/IBM360.jpg"
       animation : "fadeInUp" # animation select from : https://daneden.github.io/animate.css/
       button:
         enable : true
@@ -20,8 +20,8 @@ slider:
     - subtitle : "KEEP YOUR  Identities and credentials managed"
       title : "Robin Granberg"
       content : "on IT security topics"
-      bg_image_webp : "images/slider/banner-2x.webp"
-      bg_image : "images/slider/banner-2x.jpg"
+      bg_image_webp : "images/slider/IBM360_2.webp"
+      bg_image : "images/slider/IBM360_2.jpg"
       animation : "fadeInUp" # animation select from : https://daneden.github.io/animate.css/
       button:
         enable : true
