@@ -28,7 +28,7 @@ When you set up a trust with another forest and specifically only want your user
 
 
 ### PROBLEM
-{{< image src="../../images/blog/ForestOneWayTrust.webp" srcAlt="../../images/blog/ForestOneWayTrust.png" >}}
+[{{< image src="../../images/blog/ForestOneWayTrust.webp" srcAlt="../../images/blog/ForestOneWayTrust.png" >}}](../../images/blog/ForestOneWayTrust.png)
 
 
 The problem is very well documented in [SID filter as security boundary between domains? (Part 7) - Trust account attack - from trusting to trusted](https://improsec.com/tech-blog/sid-filter-as-security-boundary-between-domains-part-7-trust-account-attack-from-trusting-to-trusted).
@@ -60,7 +60,7 @@ In the trusting domain (Domain B) **managedpriv.com** we can as a domain admin e
 ```powershell
 .\mimikatzs.exe "lsadump::trust /patch"
 ```   
-{{< image src="../../images/blog/TrustAcc_Mimikatz.webp" srcAlt="../../images/blog/TrustAcc_Mimikatz.png" >}}
+[{{< image src="../../images/blog/ForestOneWayTrust.webp" srcAlt="../../images/blog/TrustAcc_Mimikatz.png" >}}](../../images/blog/TrustAcc_Mimikatz.png)
 
 Next, we use **Rubeus** with the NTLM hash in a Pass-the-hash attack on the same machine, towards the domain controller in the trusted domain (Domain A) **contoso.com**.
 
