@@ -7,8 +7,8 @@ description: "The sensitive actions in Entra ID and how nesting is a problem."
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
 # post thumbnail
-image: "images/blog/Security_Zone_Sensitive_Actions.webp"
-image_webp: "images/blog/Security_Zone_Sensitive_Actions.jpg"
+image: "images/blog/Security_Zone_Sensitive_Actions.png"
+image_webp: "images/blog/Security_Zone_Sensitive_Actions.webp"
 # post author
 author: "Robin Granberg"
 # taxonomies
