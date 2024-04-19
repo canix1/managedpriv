@@ -103,7 +103,7 @@ You find the setting under **Groups** -> **Group Settings**
 [{{< image src="../../images/blog/SelfServiceGroupMgmt.webp" srcAlt="../../images/blog/SelfServiceGroupMgmt.png" >}}](https://managedpriv.com/images/blog/SelfServiceGroupMgmt.png) 
 
 #### PIM Role Approval Requirement
-All roles have a role policy settings that by default is missing an approver. In my opinion it would have been great if the Global Administratoristrators where the default approvers until it was change to another group or user.
+All roles have a role policy settings that by default is missing an approver. In my opinion it would have been great if the Global Administrators where the default approvers until it was change to another group or user.
 
 [{{< image src="../../images/blog/rolesettings.webp" srcAlt="../../images/blog/rolesettings.png" >}}](https://managedpriv.com/images/blog/rolesettings.png) 
 
@@ -140,7 +140,7 @@ Here is the attack path visualized:
 
 [{{< image src="../../images/blog/sensitiveactionszoneboken.webp" srcAlt="../../images/blog/sensitiveactionszoneboken.png" >}}](https://managedpriv.com/images/blog/sensitiveactionszoneboken.png) 
 
-The permissions Add_Member or Add_Owner is pretty for standard roles.
+The permissions Add_Member or Add_Owner are common for several roles.
 
 Here is a list of permissions and roles that have the right to update groups besides the **Privileged Authentication Administrator** and **Global Administrator** role:
 |Role|Permission|
@@ -222,7 +222,7 @@ To identify the scenario described above, look for nested groups where **Priv Mg
 
 When **Priv Mgmt** is **false**, it means the object can be managed by other than members of **Privileged Authentication Administrator** and **Global Administrator**.
 
-Here is an example of the role **Global Administratoristrator** having a nested standard security group called **Entra ID Sec Group1** and it's a member and an owner.
+Here is an example of the role **Global Administrator** having a nested standard security group called **Entra ID Sec Group1** and it's a member and an owner.
 
 [{{< image src="../../images/blog/PIMSCAN_Warning.webp" srcAlt="../../images/blog/PIMSCAN_Warning.png" >}}](https://managedpriv.com/images/blog/PIMSCAN_Warning.png) 
 
