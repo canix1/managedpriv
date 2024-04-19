@@ -2,7 +2,7 @@
 title: "Breaching the sensitive action zone in Entra ID PIM"
 date: 2024-04-19T17:25:32+06:00
 # meta description
-description: "Getting diffrent properties depending on your authentcation"
+description: "The sensitive actions in Entra ID and how nesting is a problem."
 # page title background image
 bg_image_webp: "images/backgrounds/page-title.webp"
 bg_image: "images/backgrounds/page-title.jpg"
@@ -12,7 +12,7 @@ image_webp: "images/blog/Security_Zone_Sensitive_Actions.jpg"
 # post author
 author: "Robin Granberg"
 # taxonomies
-categories: ["Privilege Identity Management","Azure AD"]
+categories: ["Privilege Identity Management","Entra ID"]
 tags: ["Entra ID","API"]
 # type
 type: "post"
