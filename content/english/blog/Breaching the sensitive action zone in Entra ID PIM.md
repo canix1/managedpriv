@@ -1,6 +1,6 @@
     ---
 title: "Breaching the sensitive action zone in Entra ID PIM"
-date: 2024-04-13T12:45:32+06:00
+date: 2024-04-19T17:25:32+06:00
 # meta description
 description: "Getting diffrent properties depending on your authentcation"
 # page title background image
