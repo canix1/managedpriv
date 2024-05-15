@@ -19,7 +19,7 @@ type: "post"
 
 
 ---
-In the article [SID filter as security boundary between domains? (Part 7) - Trust account attack - from trusting to trusted](https://improsec.com/tech-blog/sid-filter-as-security-boundary-between-domains-part-7-trust-account-attack-from-trusting-to-trusted) , by **Jonas Bülow Knudsen**, **Martin Sohn Christensen**, **Tobias Thorbjørn Munch Torp**, they describe how the security boundary of the forest can be breached by an admin in the trusted forest and I will explain how you can mitigate this problem.
+In the article [SID filter as security boundary between domains? (Part 7) - Trust account attack - from trusting to trusted](https://improsec.com/tech-blog/sid-filter-as-security-boundary-between-domains-part-7-trust-account-attack-from-trusting-to-trusted) , by **Jonas Bülow Knudsen**, **Martin Sohn Christensen**, **Tobias Thorbjørn Munch Torp**, they describe how the security boundary of the forest can be breached by an admin in the trusting forest and I will explain how you can mitigate this problem.
 
 ## NOT A SECURITY BOUNDARY
 This topic has been discussed in the previous blog post [Not A Security Boundary: Breaking Forest Trusts](https://posts.specterops.io/not-a-security-boundary-breaking-forest-trusts-cd125829518d) by **Will Schroeder** **@harmj0y** but I will focus on the scenario described in [SID filter as security boundary between domains? (Part 7) - Trust account attack - from trusting to trusted](https://improsec.com/tech-blog/sid-filter-as-security-boundary-between-domains-part-7-trust-account-attack-from-trusting-to-trusted).
