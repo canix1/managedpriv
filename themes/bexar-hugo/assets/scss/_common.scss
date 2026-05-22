@@ -490,6 +490,10 @@ textarea.form-control-sm {
   pre {
     padding: 10px 20px;
     background: $gray;
+
+    * {
+      margin-bottom: 0;
+    }
   }
 }
 
